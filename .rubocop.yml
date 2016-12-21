@@ -1,0 +1,12 @@
+AllCops:
+  TargetRubyVersion: 2.3
+  Include:
+    - "**/Rakefile"
+    - "**/Gemfile"
+    - "**/*.gemspec"
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Documentation:
+  Enabled: false
