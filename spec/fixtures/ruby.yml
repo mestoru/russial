@@ -1,0 +1,17 @@
+ru:
+  russial:
+    ruby:
+      singular:
+        nominative: "рубин"
+        genitive: "рубина"
+        dative: "рубину"
+        accusative: "рубин"
+        instrumental: "рубином"
+        prepositional: "рубине"
+      plural:
+        nominative: "рубины"
+        genitive: "рубинов"
+        dative: "рубинам"
+        accusative: "рубины"
+        instrumental: "рубинами"
+        prepositional: "рубинах"

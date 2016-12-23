@@ -77,6 +77,46 @@ describe Russial do
         end
       end
     end
+
+    context "with I18n" do
+      require "i18n"
+
+      before do
+        I18n.tap do |c|
+          c.available_locales = [:ru]
+          c.locale = :ru
+          c.load_path = ["spec/fixtures/ruby.yml"]
+        end
+      end
+
+      let!(:inflections) { {} }
+
+      describe "cases" do
+        describe "#nominative" do
+          it { expect(subject.nominative).to eq "рубин" }
+        end
+
+        describe "#genitive" do
+          it { expect(subject.genitive).to eq "рубина" }
+        end
+
+        describe "#dative" do
+          it { expect(subject.dative).to eq "рубину" }
+        end
+
+        describe "#accusative" do
+          it { expect(subject.accusative).to eq "рубин" }
+        end
+
+        describe "#instrumental" do
+          it { expect(subject.instrumental).to eq "рубином" }
+        end
+
+        describe "#prepositional" do
+          it { expect(subject.prepositional).to eq "рубине" }
+        end
+      end
+    end
   end
 
   RUBY_INFLECTIONS = {
