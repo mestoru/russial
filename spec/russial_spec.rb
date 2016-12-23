@@ -8,45 +8,85 @@ describe Russial do
     let!(:word) { "ruby" }
     let!(:inflections) { RUBY_INFLECTIONS }
 
-    describe "#nominative" do
-      it { expect(subject.nominative).to eq "рубин" }
-      it { expect(subject.n).to eq "рубин" }
+    context "when singular" do
+      describe "cases" do
+        describe "#nominative" do
+          it { expect(subject.nominative).to eq "рубин" }
+        end
+
+        describe "#genitive" do
+          it { expect(subject.genitive).to eq "рубина" }
+        end
+
+        describe "#dative" do
+          it { expect(subject.dative).to eq "рубину" }
+        end
+
+        describe "#accusative" do
+          it { expect(subject.accusative).to eq "рубин" }
+        end
+
+        describe "#instrumental" do
+          it { expect(subject.instrumental).to eq "рубином" }
+        end
+
+        describe "#prepositional" do
+          it { expect(subject.prepositional).to eq "рубине" }
+        end
+      end
     end
 
-    describe "#genitive" do
-      it { expect(subject.genitive).to eq "рубина" }
-      it { expect(subject.g).to eq "рубина" }
-    end
+    context "when plural" do
+      describe "cases" do
+        before do
+          subject.plural
+        end
 
-    describe "#dative" do
-      it { expect(subject.dative).to eq "рубину" }
-      it { expect(subject.d).to eq "рубину" }
-    end
+        describe "#nominative" do
+          it { expect(subject.nominative).to eq "рубины" }
+        end
 
-    describe "#accusative" do
-      it { expect(subject.accusative).to eq "рубин" }
-      it { expect(subject.a).to eq "рубин" }
-    end
+        describe "#genitive" do
+          it { expect(subject.genitive).to eq "рубинов" }
+        end
 
-    describe "#instrumental" do
-      it { expect(subject.instrumental).to eq "рубином" }
-      it { expect(subject.i).to eq "рубином" }
-    end
+        describe "#dative" do
+          it { expect(subject.dative).to eq "рубинам" }
+        end
 
-    describe "#prepositional" do
-      it { expect(subject.prepositional).to eq "рубине" }
-      it { expect(subject.p).to eq "рубине" }
+        describe "#accusative" do
+          it { expect(subject.accusative).to eq "рубины" }
+        end
+
+        describe "#instrumental" do
+          it { expect(subject.instrumental).to eq "рубинами" }
+        end
+
+        describe "#prepositional" do
+          it { expect(subject.prepositional).to eq "рубинах" }
+        end
+      end
     end
   end
 
   RUBY_INFLECTIONS = {
     ruby: {
-      nominative: "рубин",
-      genitive: "рубина",
-      dative: "рубину",
-      accusative: "рубин",
-      instrumental: "рубином",
-      prepositional: "рубине"
+      singular: {
+        nominative: "рубин",
+        genitive: "рубина",
+        dative: "рубину",
+        accusative: "рубин",
+        instrumental: "рубином",
+        prepositional: "рубине"
+      },
+      plural: {
+        nominative: "рубины",
+        genitive: "рубинов",
+        dative: "рубинам",
+        accusative: "рубины",
+        instrumental: "рубинами",
+        prepositional: "рубинах"
+      }
     }
   }.freeze
 end
