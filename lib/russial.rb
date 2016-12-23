@@ -14,7 +14,7 @@ class Russial
   prepend Dictionary::Initializer
   extend  Config::Configuration
 
-  def initialize(word, dictionary)
+  def initialize(word, dictionary: {})
     @word = word.to_sym
     @dictionary = prepare_dictionary(dictionary)
     @path = []

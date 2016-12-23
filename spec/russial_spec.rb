@@ -2,7 +2,7 @@
 require "spec_helper"
 
 describe Russial do
-  subject { described_class.new(word, inflections) }
+  subject { described_class.new(word, dictionary: inflections) }
 
   before do
     described_class.configure do |c|
