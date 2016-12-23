@@ -12,7 +12,7 @@ class Russial
       def generate_methods
         keys.each do |_, key|
           define_singleton_method(key) do
-            path << key
+            path << key unless path.include? key
             get
           end
         end

@@ -66,6 +66,16 @@ describe Russial do
           it { expect(subject.prepositional).to eq "рубинах" }
         end
       end
+
+      context "when multiple plural call" do
+        before do
+          3.times { subject.plural }
+        end
+
+        describe "#nominative" do
+          it { expect(subject.nominative).to eq "рубины" }
+        end
+      end
     end
   end
 
