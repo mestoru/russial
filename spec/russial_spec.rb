@@ -72,6 +72,11 @@ describe Russial do
         describe "#prepositional" do
           it { expect(subject.prepositional).to eq "рубинах" }
         end
+
+        it "handles two cases from same scope in a row" do
+          expect(subject.nominative).to eq "рубины"
+          expect(subject.genitive).to eq "рубинов"
+        end
       end
 
       context "when multiple plural call" do
@@ -149,6 +154,18 @@ describe Russial do
 
         describe "#prepositional" do
           it { expect(subject.prepositional).to eq "рубине" }
+        end
+      end
+
+      describe "#reset" do
+        before do
+          subject.plural
+        end
+
+        let(:path_after_reset) { subject.reset.send(:path) }
+
+        it "resets state" do
+          expect(path_after_reset).to be_empty
         end
       end
     end

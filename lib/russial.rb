@@ -20,10 +20,19 @@ class Russial
     @path = []
   end
 
+  def reset
+    reset_path
+    self
+  end
+
   private
 
   attr_reader :dictionary, :word
   attr_accessor :path
+
+  def soft_reset_path
+    path.pop
+  end
 
   def reset_path
     self.path = []

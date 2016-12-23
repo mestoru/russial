@@ -30,7 +30,7 @@ class Russial
         when Hash
           self
         when String
-          reset_path
+          soft_reset_path
           memoized_result
         end
       end
