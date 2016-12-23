@@ -7,7 +7,7 @@ class Russial
       private
 
       def prepare_dictionary(*)
-        ::I18n.t("russial.#{word}")
+        ::I18n.t(word, scope: self.class.config.i18n_scope)
       end
     end
   end

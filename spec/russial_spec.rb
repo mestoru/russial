@@ -4,6 +4,13 @@ require "spec_helper"
 describe Russial do
   subject { described_class.new(word, inflections) }
 
+  before do
+    described_class.configure do |c|
+      c.aliases = ALIASES
+      c.i18n_scope = "russial_scope"
+    end
+  end
+
   describe "cases" do
     let!(:word) { "ruby" }
     let!(:inflections) { RUBY_INFLECTIONS }
@@ -78,6 +85,34 @@ describe Russial do
       end
     end
 
+    context "when aliases" do
+      describe "cases" do
+        describe "#n" do
+          it { expect(subject.n).to eq "рубин" }
+        end
+
+        describe "#g" do
+          it { expect(subject.g).to eq "рубина" }
+        end
+
+        describe "#d" do
+          it { expect(subject.d).to eq "рубину" }
+        end
+
+        describe "#a" do
+          it { expect(subject.a).to eq "рубин" }
+        end
+
+        describe "#i" do
+          it { expect(subject.i).to eq "рубином" }
+        end
+
+        describe "#p" do
+          it { expect(subject.p).to eq "рубине" }
+        end
+      end
+    end
+
     context "with I18n" do
       require "i18n"
 
@@ -118,6 +153,15 @@ describe Russial do
       end
     end
   end
+
+  ALIASES = {
+    n: :nominative,
+    g: :genitive,
+    d: :dative,
+    a: :accusative,
+    i: :instrumental,
+    p: :prepositional
+  }.freeze
 
   RUBY_INFLECTIONS = {
     ruby: {

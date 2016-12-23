@@ -5,6 +5,7 @@ class Russial
       def initialize(*)
         super
         generate_methods
+        generate_aliases
       end
 
       private
@@ -15,6 +16,12 @@ class Russial
             path << key unless path.include? key
             get
           end
+        end
+      end
+
+      def generate_aliases
+        singleton_class.class_eval do
+          superclass.config.aliases.each { |a, m| alias_method a, m }
         end
       end
 
