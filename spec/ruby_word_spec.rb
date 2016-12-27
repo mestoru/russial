@@ -125,7 +125,7 @@ describe Russial do
         I18n.tap do |c|
           c.available_locales = [:ru]
           c.locale = :ru
-          c.load_path = ["spec/fixtures/ruby.yml"]
+          c.load_path = ["spec/fixtures/words.yml"]
         end
       end
 
@@ -156,17 +156,17 @@ describe Russial do
           it { expect(subject.prepositional).to eq "рубине" }
         end
       end
+    end
 
-      describe "#reset" do
-        before do
-          subject.plural
-        end
+    describe "#reset" do
+      before do
+        subject.plural
+      end
 
-        let(:path_after_reset) { subject.reset.send(:path) }
+      let(:path_after_reset) { subject.reset.send(:path) }
 
-        it "resets state" do
-          expect(path_after_reset).to be_empty
-        end
+      it "resets state" do
+        expect(path_after_reset).to be_empty
       end
     end
   end

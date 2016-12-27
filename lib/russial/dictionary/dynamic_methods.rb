@@ -11,9 +11,10 @@ class Russial
       private
 
       def generate_methods
-        keys.each do |_, key|
-          define_singleton_method(key) do
-            path << key unless path.include? key
+        keys.each do |key|
+          name = key.name
+          define_singleton_method(name) do
+            path << name unless path.include? name
             get
           end
         end
@@ -36,18 +37,20 @@ class Russial
       end
 
       def keys
-        @keys ||= extract_keys(dictionary).flatten(1)
+        @keys ||= extract_keys(dictionary).flatten
       end
 
-      def extract_keys(hash, depth = 0)
+      def extract_keys(hash, scope = [])
         hash.map do |k, v|
           if v.is_a? Hash
-            extract_keys(v, depth.succ) << [depth, k]
+            extract_keys(v, scope + [k]) << Key.new(k, scope)
           else
-            [depth, k]
+            [Key.new(k, scope)]
           end
         end
       end
+
+      Key = Struct.new(:name, :scope)
     end
   end
 end

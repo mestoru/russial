@@ -15,3 +15,12 @@ ru:
         accusative: "рубины"
         instrumental: "рубинами"
         prepositional: "рубинах"
+  russial:
+      идти:
+        future: пройдёт
+        past:
+          singular:
+            male: прошёл
+            female: прошла
+          plural: прошли
+        present: проходит

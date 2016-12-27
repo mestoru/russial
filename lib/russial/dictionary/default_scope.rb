@@ -3,7 +3,7 @@ class Russial
   module Dictionary
     module DefaultScope
       def default_scope
-        @default_scope ||= keys.reverse.to_h.values[0...-1]
+        @default_scope ||= keys.first.scope
       end
 
       def result
