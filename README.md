@@ -20,6 +20,8 @@ Or install it yourself as:
 $ gem install russial
 ~~~
 
+**Note:** for Rubies less than 2.3.0 we use `backport_dig` gem, but we strongly recommend you to upgrade your Ruby version to the last one.
+
 ## Usage
 
 The Russial gem automatically works with any structures that you pass as dictionary. You can use it with plain Ruby or I18n/Rails.

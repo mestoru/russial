@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+require "backport_dig" unless {}.respond_to?(:dig)
+
 require "russial/version"
 require "russial/config"
 require "russial/config/configuration"
