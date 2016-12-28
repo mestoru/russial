@@ -1,4 +1,4 @@
-# Russial
+# Russial [![Gem Version](https://badge.fury.io/rb/russial.svg)](https://badge.fury.io/rb/russial) [![Build Status](https://travis-ci.org/mestoru/russial.svg?branch=master)](https://travis-ci.org/mestoru/russial)
 
 An easy way to make word declension.
 
