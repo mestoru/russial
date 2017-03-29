@@ -118,6 +118,12 @@ describe Russial do
       end
     end
 
+    context "when dictionary is nil" do
+      let!(:inflections) { nil }
+
+      it { expect { subject }.to_not raise_error }
+    end
+
     context "with I18n" do
       require "i18n"
 
@@ -169,6 +175,13 @@ describe Russial do
         expect(path_after_reset).to be_empty
       end
     end
+  end
+
+  describe "default config" do
+    let!(:config) { described_class.reset }
+
+    it { expect(config.aliases).to eq({}) }
+    it { expect(config.i18n_scope).to eq :russial }
   end
 
   ALIASES = {

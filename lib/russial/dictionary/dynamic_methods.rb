@@ -22,7 +22,13 @@ class Russial
 
       def generate_aliases
         singleton_class.class_eval do
-          superclass.config.aliases.each { |a, m| alias_method a, m }
+          superclass.config.aliases.each do |a, m|
+            begin
+              alias_method a, m
+            rescue NameError
+              next
+            end
+          end
         end
       end
 
