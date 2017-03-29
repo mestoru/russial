@@ -159,7 +159,7 @@ word.reset.plural.i # "рубинами"
 Change the root scope for I18n search.
 
 ```ruby
-described_class.configure do |c|
+Russial.configure do |c|
   c.i18n_scope = "russial"
 end
 ```
