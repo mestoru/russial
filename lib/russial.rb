@@ -1,5 +1,11 @@
 # frozen_string_literal: true
-require "backport_dig" unless {}.respond_to?(:dig)
+
+begin
+  require "backport_dig" unless {}.respond_to?(:dig)
+rescue LoadError
+  puts "Please, install `backport_dig` gem or upgrade your Ruby version."
+  exit
+end
 
 require "russial/version"
 require "russial/config"

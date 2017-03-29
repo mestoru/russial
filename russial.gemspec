@@ -24,8 +24,6 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = ">= 2.2.0"
 
-  spec.add_dependency "backport_dig", "0.0.2" if RUBY_VERSION < "2.3.0"
-
   spec.add_development_dependency "bundler", "~> 1.13"
   spec.add_development_dependency "i18n", "~> 0.7.0"
   spec.add_development_dependency "rake", "~> 10.0"

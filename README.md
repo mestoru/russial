@@ -20,7 +20,7 @@ Or install it yourself as:
 $ gem install russial
 ```
 
-**Note:** for Rubies less than 2.3.0 we use `backport_dig` gem, but we strongly recommend you to upgrade your Ruby version to the last one.
+**Note:** for Rubies less than 2.3.0, please use the `backport_dig` gem. But it's better to upgrade your Ruby version to the last one.
 
 ## Usage
 
