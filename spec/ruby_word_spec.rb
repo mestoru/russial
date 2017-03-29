@@ -2,7 +2,13 @@
 require "spec_helper"
 
 describe Russial do
-  subject { described_class.new(word, dictionary: inflections) }
+  subject do
+    described_class.new(word,
+                        dictionary: inflections,
+                        substitutions: substitutions)
+  end
+
+  let!(:substitutions) { {} }
 
   before do
     described_class.configure do |c|
@@ -177,6 +183,15 @@ describe Russial do
     end
   end
 
+  describe "substitutions" do
+    let!(:word) { "многокомнатная квартира" }
+    let!(:inflections) { FLAT_INFLECTIONS }
+    let!(:substitutions) { FLAT_SUBSTITUTIONS }
+
+    it { expect(subject.dative).to eq "трёхкомнатной квартире" }
+    it { expect(subject.instrumental).to eq "трёхкомнатной квартирой" }
+  end
+
   describe "default config" do
     let!(:config) { described_class.reset }
 
@@ -213,4 +228,17 @@ describe Russial do
       }
     }
   }.freeze
+
+  FLAT_INFLECTIONS = {
+    "многокомнатная квартира": {
+      nominative: "___комнатная квартира",
+      genitive: "___комнатной квартиры",
+      dative: "___комнатной квартире",
+      accusative: "___комнатную квартиру",
+      instrumental: "___комнатной квартирой",
+      prepositional: "___комнатной квартире"
+    }
+  }.freeze
+
+  FLAT_SUBSTITUTIONS = { "___" => "трёх" }.freeze
 end

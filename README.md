@@ -25,6 +25,7 @@ $ gem install russial
 ## Usage
 
 The Russial gem automatically works with any structures that you pass as dictionary. You can use it with plain Ruby or I18n/Rails.
+Keys must be symbols.
 
 ### Plain Ruby
 
@@ -97,6 +98,29 @@ word = Russial.new("идти")
 word.future # "пройдёт"
 word.reset.past.singular.male # "прошёл"
 word.reset.past.singular.female # "прошла"
+```
+
+### Substitutions
+
+With this feature you can use the gem more advanced way. See example:
+
+```ruby
+flat_dictionary = {
+  "многокомнатная квартира": { 
+    nominative: "___комнатная квартира",
+    genitive: "___комнатной квартиры",
+    dative: "___комнатной квартире",
+    accusative: "___комнатную квартиру",
+    instrumental: "___комнатной квартирой",
+    prepositional: "___комнатной квартире"
+  }
+}
+substitutions = { "___" => "трёх" }
+
+word = Russial.new("многокомнатная квартира", dictionary: flat_dictionary, substitutions: substitutions)
+
+word.dative # "трёхкомнатной квартире"
+word.instrumental # "трёхкомнатной квартирой"
 ```
 
 ## Settings

@@ -6,4 +6,3 @@ require "pry"
 SimpleCov.start
 
 require "russial"
-

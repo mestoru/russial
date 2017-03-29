@@ -38,7 +38,13 @@ class Russial
           self
         when String
           soft_reset_path
-          memoized_result
+          substitutions.empty? ? memoized_result : substitute(memoized_result)
+        end
+      end
+
+      def substitute(word)
+        substitutions.inject(word) do |result, (from, to)|
+          result.gsub(from, to)
         end
       end
 

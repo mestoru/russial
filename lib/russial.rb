@@ -16,9 +16,10 @@ class Russial
   prepend Dictionary::Initializer
   extend  Config::Configuration
 
-  def initialize(word, dictionary: {})
+  def initialize(word, dictionary: {}, substitutions: {})
     @word = word.to_sym
     @dictionary = prepare_dictionary(dictionary)
+    @substitutions = substitutions
     @path = []
   end
 
@@ -29,7 +30,7 @@ class Russial
 
   private
 
-  attr_reader :dictionary, :word
+  attr_reader :dictionary, :word, :substitutions
   attr_accessor :path
 
   def soft_reset_path
