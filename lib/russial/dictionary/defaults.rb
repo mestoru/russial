@@ -2,18 +2,21 @@
 class Russial
   module Dictionary
     module Defaults
-
       def initialize_defaults
         default_scope
         default_value
       end
 
       def default_scope
-        @default_scope ||= keys.first.scope
+        @default_scope ||= default_key && default_key.scope
       end
 
       def default_value
-        @default_value ||= send(keys.first.name)
+        @default_value ||= default_key && send(keys.first.name)
+      end
+
+      def default_key
+        @default_key ||= keys.first
       end
 
       def result
