@@ -27,7 +27,7 @@ class Russial
   def initialize(word, dictionary: {}, substitutions: {})
     @word = word.to_sym
     @dictionary = prepare_dictionary(dictionary)
-    @substitutions = substitutions
+    @substitutions = substitutions || {}
     @path = []
   end
 
