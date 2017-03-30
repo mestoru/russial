@@ -2,6 +2,12 @@
 class Russial
   module Dictionary
     module Defaults
+
+      def initialize_defaults
+        default_scope
+        default_value
+      end
+
       def default_scope
         @default_scope ||= keys.first.scope
       end

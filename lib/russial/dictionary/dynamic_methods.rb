@@ -44,7 +44,7 @@ class Russial
 
       def substitute(word)
         substitutions.inject(word) do |result, (from, to)|
-          result.gsub(from, to)
+          result.gsub(from.to_s, to)
         end
       end
 
