@@ -8,15 +8,7 @@ class Russial
       end
 
       def default_scope
-        @default_scope ||= default_key && default_key.scope
-      end
-
-      def default_value
-        @default_value ||= default_key && send(keys.first.name)
-      end
-
-      def default_key
-        @default_key ||= keys.first
+        @default_scope ||= keys.any? && keys.first.scope
       end
 
       def result
@@ -24,8 +16,9 @@ class Russial
       end
 
       def to_s
-        default_value.to_s
+        word.to_s
       end
+      alias default_value to_s
 
       private
 

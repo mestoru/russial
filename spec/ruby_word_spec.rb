@@ -203,8 +203,8 @@ describe Russial do
     let!(:word) { "ruby" }
     let!(:inflections) { RUBY_INFLECTIONS }
 
-    it { expect("Превосходный #{subject}!").to eq "Превосходный рубин!" }
-    it { expect(subject.to_sym).to eq :рубин }
+    it { expect("Превосходный #{subject}!").to eq "Превосходный ruby!" }
+    it { expect(subject.to_sym).to eq :ruby }
     it { expect(subject.respond_to?(:to_sym)).to be_truthy }
   end
 
