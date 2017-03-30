@@ -29,8 +29,6 @@ class Russial
     @dictionary = prepare_dictionary(dictionary)
     @substitutions = substitutions
     @path = []
-
-    initialize_defaults
   end
 
   def reset

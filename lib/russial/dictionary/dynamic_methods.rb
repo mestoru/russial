@@ -6,6 +6,7 @@ class Russial
         super
         generate_methods
         generate_aliases
+        initialize_defaults
       end
 
       private
