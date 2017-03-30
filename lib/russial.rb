@@ -1,22 +1,24 @@
 # frozen_string_literal: true
 
+# :nocov:
 begin
   require "backport_dig" unless {}.respond_to?(:dig)
 rescue LoadError
   puts "Please, install `backport_dig` gem or upgrade your Ruby version."
   exit
 end
+# :nocov:
 
 require "russial/version"
 require "russial/config"
 require "russial/config/configuration"
-require "russial/dictionary/default_scope"
+require "russial/dictionary/defaults"
 require "russial/dictionary/dynamic_methods"
 require "russial/dictionary/initializer"
 require "russial/dictionary/i18n"
 
 class Russial
-  include Dictionary::DefaultScope
+  include Dictionary::Defaults
   include Dictionary::I18n if defined?(I18n)
   prepend Dictionary::DynamicMethods
   prepend Dictionary::Initializer

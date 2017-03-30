@@ -199,6 +199,15 @@ describe Russial do
     it { expect(config.i18n_scope).to eq :russial }
   end
 
+  describe "missing methods" do
+    let!(:word) { "ruby" }
+    let!(:inflections) { RUBY_INFLECTIONS }
+
+    it { expect("Превосходный #{subject}!").to eq "Превосходный рубин!" }
+    it { expect(subject.to_sym).to eq :рубин }
+    it { expect(subject.respond_to?(:to_sym)).to be_truthy }
+  end
+
   ALIASES = {
     n: :nominative,
     g: :genitive,
