@@ -29,7 +29,7 @@ Keys must be symbols.
 
 ### Plain Ruby
 
-With plain Ruby it's looks like:
+With plain Ruby it looks like:
 
 ```ruby
 ruby_dictionary = {
