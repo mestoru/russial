@@ -1,11 +1,11 @@
 # frozen_string_literal: true
+require "i18n"
 require "spec_helper"
 
 describe Russial do
   subject { described_class.new(word) }
 
   context "with I18n" do
-    require "i18n"
 
     let!(:word) { "идти" }
 

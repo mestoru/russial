@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-require "i18n"
 
 class Russial
   module Dictionary

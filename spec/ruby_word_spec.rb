@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require "i18n"
 require "spec_helper"
 
 describe Russial do
@@ -131,7 +132,6 @@ describe Russial do
     end
 
     context "with I18n" do
-      require "i18n"
 
       before do
         I18n.tap do |c|
