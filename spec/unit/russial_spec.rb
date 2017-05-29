@@ -1,27 +1,19 @@
 # frozen_string_literal: true
-require "i18n"
 require "spec_helper"
 
 describe Russial do
-  subject do
-    described_class.new(word,
-                        dictionary: inflections,
-                        substitutions: substitutions)
-  end
+  subject { described_class.new(word, dictionary: inflections) }
 
-  let!(:substitutions) { {} }
+  let!(:inflections) { RUBY_INFLECTIONS }
+  let!(:word) { "ruby" }
 
   before do
     described_class.configure do |c|
       c.aliases = ALIASES
-      c.i18n_scope = "russial_scope"
     end
   end
 
   describe "cases" do
-    let!(:word) { "ruby" }
-    let!(:inflections) { RUBY_INFLECTIONS }
-
     context "when singular" do
       describe "cases" do
         describe "#nominative" do
@@ -131,45 +123,6 @@ describe Russial do
       it { expect { subject }.to_not raise_error }
     end
 
-    context "with I18n" do
-
-      before do
-        I18n.tap do |c|
-          c.available_locales = [:ru]
-          c.locale = :ru
-          c.load_path = ["spec/fixtures/words.yml"]
-        end
-      end
-
-      let!(:inflections) { {} }
-
-      describe "cases" do
-        describe "#nominative" do
-          it { expect(subject.nominative).to eq "рубин" }
-        end
-
-        describe "#genitive" do
-          it { expect(subject.genitive).to eq "рубина" }
-        end
-
-        describe "#dative" do
-          it { expect(subject.dative).to eq "рубину" }
-        end
-
-        describe "#accusative" do
-          it { expect(subject.accusative).to eq "рубин" }
-        end
-
-        describe "#instrumental" do
-          it { expect(subject.instrumental).to eq "рубином" }
-        end
-
-        describe "#prepositional" do
-          it { expect(subject.prepositional).to eq "рубине" }
-        end
-      end
-    end
-
     describe "#reset" do
       before do
         subject.plural
@@ -183,15 +136,6 @@ describe Russial do
     end
   end
 
-  describe "substitutions" do
-    let!(:word) { "многокомнатная квартира" }
-    let!(:inflections) { FLAT_INFLECTIONS }
-    let!(:substitutions) { FLAT_SUBSTITUTIONS }
-
-    it { expect(subject.dative).to eq "трёхкомнатной квартире" }
-    it { expect(subject.instrumental).to eq "трёхкомнатной квартирой" }
-  end
-
   describe "default config" do
     let!(:config) { described_class.reset }
 
@@ -200,9 +144,6 @@ describe Russial do
   end
 
   describe "missing methods" do
-    let!(:word) { "ruby" }
-    let!(:inflections) { RUBY_INFLECTIONS }
-
     it { expect("Превосходный #{subject}!").to eq "Превосходный ruby!" }
     it { expect(subject.to_sym).to eq :ruby }
     it { expect(subject.respond_to?(:to_sym)).to be_truthy }
@@ -237,17 +178,4 @@ describe Russial do
       }
     }
   }.freeze
-
-  FLAT_INFLECTIONS = {
-    "многокомнатная квартира": {
-      nominative: "___комнатная квартира",
-      genitive: "___комнатной квартиры",
-      dative: "___комнатной квартире",
-      accusative: "___комнатную квартиру",
-      instrumental: "___комнатной квартирой",
-      prepositional: "___комнатной квартире"
-    }
-  }.freeze
-
-  FLAT_SUBSTITUTIONS = { "___" => "трёх" }.freeze
 end

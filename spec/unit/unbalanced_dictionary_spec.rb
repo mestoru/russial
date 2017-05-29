@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-require "i18n"
 require "spec_helper"
 
 describe Russial do
@@ -10,10 +9,8 @@ describe Russial do
     let!(:word) { "идти" }
 
     before do
-      I18n.tap do |c|
-        c.available_locales = [:ru]
-        c.locale = :ru
-        c.load_path = ["spec/fixtures/words.yml"]
+      described_class.configure do |c|
+        c.i18n_scope = "russial"
       end
     end
 
