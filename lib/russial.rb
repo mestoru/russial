@@ -53,3 +53,5 @@ class Russial
     dictionary.dig(*path) || super
   end
 end
+
+require "russial/kernel"

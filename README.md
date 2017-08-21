@@ -123,6 +123,13 @@ word.dative # "трёхкомнатной квартире"
 word.instrumental # "трёхкомнатной квартирой"
 ```
 
+### Shortcut
+
+Instead of using full form of instantiating, you can use shortcut:
+```ruby
+Russial("ruby")
+```
+
 ## Settings
 
 You can configure this gem. Add settings to initializers.
