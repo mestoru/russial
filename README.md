@@ -24,7 +24,7 @@ $ gem install russial
 
 ## Usage
 
-The Russial gem automatically works with any structures that you pass as dictionary. You can use it with plain Ruby or I18n/Rails.
+The Russial gem automatically works with any Hash-like structures that you pass as dictionary. You can use it with plain Ruby or I18n/Rails.
 Keys must be symbols.
 
 ### Plain Ruby
